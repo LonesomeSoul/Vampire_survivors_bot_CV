@@ -1,0 +1,2 @@
+path G:\DS\Vampire_survivors
+screen 420 178 1720 991 
