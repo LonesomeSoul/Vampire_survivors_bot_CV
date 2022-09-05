@@ -1,14 +1,14 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[34]:
+# In[1]:
 
 
 import cv2,keyboard,pyautogui as pg, numpy as np,os,gc,sys
 import utils
 
 
-# In[44]:
+# In[2]:
 
 
 def process_cfg(cfg_file_arr):
@@ -37,7 +37,7 @@ def process_cfg(cfg_file_arr):
     return direction_count,screen_arr,path
 
 
-# In[40]:
+# In[7]:
 
 
 def mouseClick(events, x, y, flags, params):
@@ -48,11 +48,9 @@ def mouseClick(events, x, y, flags, params):
             posList.pop(-1)
 
 def action():
-    global root_path
+    global root_path, posList
     #path_1=r"G:\DS\Vampire_survivors\directions_imgs"
-    path_1=os.path.join(root_path,"directions_imgs")
-    #path_2=r"G:\DS\Vampire_survivors\etc\screenshots"
-    path_2=os.path.join(root_path,"etc","screenshots")
+    
 
     path_adding=""
     #path_adding_arr=["\\right","\\left","\\forward","\\back","\\space","\\nothing"]
@@ -65,6 +63,9 @@ def action():
         cfg_file_arr.append(line.split())
     file.close()
     direction_count,screen_pos_arr,root_path=process_cfg(cfg_file_arr)
+    path_1=os.path.join(root_path,"directions_imgs")
+    #path_2=r"G:\DS\Vampire_survivors\etc\screenshots"
+    path_2=os.path.join(root_path,"etc","screenshots")
     x1,y1=screen_pos_arr[0],screen_pos_arr[1]
     x2,y2=screen_pos_arr[2],screen_pos_arr[3]
 
@@ -89,6 +90,7 @@ def action():
         x2,y2=posList[1]
     except:
         print("Ошибка: Неверное количество точек")
+        sys.exit()
 
     file=open(r"Vampire_survivors_bot\Vampire_survivors_cfg.txt","w")
     file.write("path "+root_path+"\n"+"screen ")
@@ -97,7 +99,7 @@ def action():
     file.close()
 
 
-# In[46]:
+# In[ ]:
 
 
 if __name__ == '__main__':
@@ -118,6 +120,12 @@ if __name__ == '__main__':
             file.write(str(i)+" ")
         file.close()
     sys.exit()
+
+
+# In[ ]:
+
+
+
 
 
 # In[ ]:
