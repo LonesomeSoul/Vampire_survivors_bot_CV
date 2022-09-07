@@ -1,0 +1,43 @@
+Bot launch order:
+
+1) !After completing this step the script will create a Vampire_survivors_bot folder in the user folder!
+
+Run script Vampire_grab_screen.py to create config-file
+
+2)
+If you need to change the directory where the screenshots will be saved for training the model: 
+manually specify the desired path in the config file that was created previously.
+
+3)
+Run the script again, if the play area does not fit 1920x1080.
+
+To select the desired area double-click LMB at the corners of the play area inside the screenshot that the script shows.
+
+To delete the last point - press RMB.
+
+To save the selected area - press Escape.
+Escape will save the selected area and shutdown the script.
+
+It is desirable that the playing area is selcted as correctly as possible.
+(without black boxes and windows interface)
+
+4)
+If you want to train the model yourself, open the script
+Vampire_survivors_collect_data_and_train_model.ipynb
+
+Cell under "MODEL TRAINING - DATA COLLECTION" area
+responsible for collecting data for the training sample. By activating it
+the script will collect screenshots of the game and distribute them to folders corresponding to
+the arrows that were pressed during the screenshot.
+
+The frequency of screenshot collection can be adjusted by changing the argument of the cv2.waitKey(20) function
+at the end of the cell.
+
+After the data collection cell, there are cells for training the model and saving it to the folder, specified earlier in the config.
+
+5)
+Launching the bot: open the game, select a character and a map,
+(important to leave the cursor on the "Start" button)
+then run the Vampire_bot.py script and make the game window active.
+Before the bot starts working, there will be a pause of 15-20 seconds to make the game window active.
+To exit the script, you must press Escape when the character dies or before.
